@@ -1,4 +1,4 @@
-package easy;
+package besttest;
 
 import java.util.HashMap;
 import java.util.LinkedList;
