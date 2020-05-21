@@ -9,6 +9,7 @@ package design_patterns.singleton;
  */
 public class Singleton {
 
+	/**缺点：单例模式没有接口，如果要扩展就必须修改源码，这样就违反了开闭原则。*/
 	public static void main(String[] args) {
 		Singleton s = new Singleton();
 		System.out.println();
@@ -18,8 +19,18 @@ public class Singleton {
 	private volatile static Singleton instance;
 
 	/** 私有构造器，不可少 */
-	private Singleton() {
-	}
+//	private Singleton() {
+//	}
+	
+
+	/**
+	 * 反射攻击可以通过setAccessible()方法将私有的构造方法公共化，进而实例化,这样写可以防止反射攻击
+	 * */
+	private Singleton(){
+        if(instance != null){
+            throw new RuntimeException("只能创建一次。");
+        }
+    }
 
 	private static class SingletonHolder {
 		private static Singleton instance = new Singleton();
@@ -37,15 +48,6 @@ public class Singleton {
 	 * 
 	 * B线程访问到第一行，看到了不为null的instance,从第8行返回一个没有初始化的instance
 	 * */
-	/**
-	 * 反射攻击问题，反序列化问题https://www.cnblogs.com/happy4java/p/11206105.html
-	 * 
-	 * Singleton如果实现了Serializable接口，那么在每次序列化时都会创建一个新对象，若要保证单例，
-	 * 必须声明所有字段都是transient的
-	 * 
-	 * 反射攻击可以通过setAccessible()方法将私有的构造方法公共化，进而实例化。
-	 * */
-	// 不仅用于单例，还可用于延迟初始化
 	public static Singleton getInstance3() {
 		if (instance == null) { // 1
 			synchronized (Singleton.class) {
@@ -57,6 +59,17 @@ public class Singleton {
 		return instance; // 8
 	}
 
+	/**
+	 *反序列化问题https://www.cnblogs.com/happy4java/p/11206105.html
+	 * 
+	 * Singleton如果实现了Serializable接口，那么在每次序列化时都会创建一个新对象，若要保证单例，
+	 * 
+	 * 必须声明所有字段都是transient的，或者重写readResolve,直接返回当前instanceZ即可
+	 * */
+	private Object readResolve() {
+        return this.instance;
+    }
+	
 	/**
 	 * 枚举实现的单例在面对 复杂的序列化及反射攻击时，依然能够保持自己的单例状态，所以被认为是单例的最佳实践。
 	 * 
