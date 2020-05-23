@@ -39,7 +39,7 @@ public class BubbleSort {
         for (int i = 0; i < len - 1; i++) {
             // 每一轮比较多少个
             for (int j = 0; j < len - 1 - i; j++) {
-                if (list[j] > list[j + 1]) {
+                if (list[j] < list[j + 1]) {
                     // 交换次序
                 	int temp = list[j];
                     list[j] = list[j + 1];
