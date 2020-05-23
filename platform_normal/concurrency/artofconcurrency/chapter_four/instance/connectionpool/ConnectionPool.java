@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_four.instance.ConnectionPool;
+package concurrency.artofconcurrency.chapter_four.instance.connectionpool;
 
 import java.sql.Connection;
 import java.util.LinkedList;
@@ -39,7 +39,8 @@ public class ConnectionPool {
                     pool.wait();
                 }
                 return pool.removeFirst();
-            } else {                long future = System.currentTimeMillis() + mills;
+            } else {                
+            	long future = System.currentTimeMillis() + mills;
                 long remaining = mills;
                 while (pool.isEmpty() && remaining > 0) {
                     pool.wait(remaining);

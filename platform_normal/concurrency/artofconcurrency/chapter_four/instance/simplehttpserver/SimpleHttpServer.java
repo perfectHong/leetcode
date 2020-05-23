@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_four.instance.SimpleHttpServer;
+package concurrency.artofconcurrency.chapter_four.instance.simplehttpserver;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -11,8 +11,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import concurrency.artofconcurrency.chapter_four.instance.ThreadPool.DefaultThreadPool;
-import concurrency.artofconcurrency.chapter_four.instance.ThreadPool.ThreadPool;
+import concurrency.artofconcurrency.chapter_four.instance.threadpool.DefaultThreadPool;
+import concurrency.artofconcurrency.chapter_four.instance.threadpool.ThreadPool;
 
 public class SimpleHttpServer {
 	// 处理HttpRequest的线程池

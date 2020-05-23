@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_four.instance.ThreadPool;
+package concurrency.artofconcurrency.chapter_four.instance.threadpool;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_four.instance.ConnectionPool;
+package concurrency.artofconcurrency.chapter_four.instance.connectionpool;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -15,7 +15,7 @@ public class ConnectionDriver {
 	
     static class ConnectionHandler implements InvocationHandler {
     	@Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable{
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable{  //断点发现，代理类是null,因为代理的是接口，不是接口的实现类
             if (method.getName().equals("commit")) {
                 TimeUnit.MILLISECONDS.sleep(100);
             }
@@ -25,6 +25,6 @@ public class ConnectionDriver {
     
     // 创建一个Connection的代理，在commit时休眠100毫秒
     public static final Connection createConnection() {
-        return (Connection) Proxy.newProxyInstance(ConnectionDriver.class.getClassLoader(),new ConnectionPool(0).getClass().getInterfaces(), new ConnectionHandler());
+        return (Connection) Proxy.newProxyInstance(ConnectionDriver.class.getClassLoader(),new Class[] {Connection.class }, new ConnectionHandler());
     }
 }

@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_four.instance.ThreadPool;
+package concurrency.artofconcurrency.chapter_four.instance.threadpool;
 
 public interface ThreadPool<Job extends Runnable> { // 有疑问，为什么job不用导包啊
        // 执行一个Job，这个Job需要实现Runnable

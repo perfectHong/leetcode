@@ -30,7 +30,7 @@ public class ConcurrencyTest {
 
 	private static void concurrency() throws InterruptedException {
 		long start = System.currentTimeMillis();
-		Thread thread = new Thread(new Runnable() {
+		Thread thread = new Thread(new Runnable() {  //对比书本，觉得不对，因为这里就一个线程啊
 			@Override
 			public void run() {
 				int a = 0;
