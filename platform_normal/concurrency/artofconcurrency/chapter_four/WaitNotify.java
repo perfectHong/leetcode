@@ -47,7 +47,7 @@ public class WaitNotify {
 	static class Wait implements Runnable {
 		public void run() {
 			// 加锁，拥有lock的Monitor
-			synchronized (lock) {
+			synchronized (lock) {     //断点打在synchronized上面就知道怎么跑的了                              
 				// 当条件不满足时，继续wait，同时释放了lock的锁
 				while (flag) {
 					try {
@@ -78,7 +78,7 @@ public class WaitNotify {
 						+ new SimpleDateFormat("HH:mm:ss").format(new Date()));
 				lock.notifyAll();
 				flag = false;
-				SleepUtils.second(5);
+				SleepUtils.second(5);  //这里睡五秒不会释放锁，要等方法块执行完毕
 			}
 			// 再次加锁
 			synchronized (lock) {

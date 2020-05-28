@@ -1,4 +1,4 @@
-package concurrency.test;
+package concurrency.artofconcurrency.chapter_eight;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -8,9 +8,9 @@ import java.util.concurrent.ThreadPoolExecutor;
  * 
  * @version 2020-5-16下午1:49:13
  * 
- * @description 待优化
+ * @description 并行执行
  */
-public class CountDownLatchTest {
+public class CountDownLatchTest2 {
 
 	private static int count = 0;
 

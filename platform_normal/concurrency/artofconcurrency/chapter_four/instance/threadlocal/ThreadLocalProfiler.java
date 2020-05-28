@@ -1,8 +1,10 @@
-package concurrency.artofconcurrency.chapter_four;
+package concurrency.artofconcurrency.chapter_four.instance.threadlocal;
 
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 这是书上的
+ * 
  * 记得之前还看过其他案例，也写下来
  * */
 public class ThreadLocalProfiler {

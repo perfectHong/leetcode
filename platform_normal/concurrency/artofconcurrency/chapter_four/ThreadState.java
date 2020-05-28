@@ -34,7 +34,7 @@ public class ThreadState {
             while (true) {
                 synchronized (Waiting.class) {
                     try {
-                        Waiting.class.wait();
+                        Waiting.class.wait();   //要被唤醒才能接着往下执行，否则就停在这里
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
