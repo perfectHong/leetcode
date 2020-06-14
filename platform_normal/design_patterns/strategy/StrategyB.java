@@ -1,8 +1,5 @@
 package design_patterns.strategy;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 import algorithm.sort.BubbleSort;
 
 /**

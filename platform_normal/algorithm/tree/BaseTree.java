@@ -22,16 +22,44 @@ public class BaseTree {
 	private int[] nums;
 
 	public static void main(String[] args) {
-		String ss = "www.baidu.com";
-		String[] str = ss.split("\\.");
-		for (int i = 0; i < str.length; i++) {
-			System.out.println(str[i]);
-		}
+
 	}
 	
+	/** 重点 */// 翻转二叉树,标准题解
+	public TreeNode invertTree(TreeNode root) {
+		if (root == null) {
+			return null;
+		}
+		TreeNode tmp = root.right;
+		root.right = root.left;
+		root.left = tmp;
+		invertTree(root.left);
+		invertTree(root.right);
+		return root;
+	}
+	
+	/**翻转二叉树,自己写的 start*/
+	public TreeNode invertTree2(TreeNode root) {
+		if (root == null) {
+			return null;
+		}
+		reverse(root.right, root.left);
+		return root;
+	}
+	private void reverse(TreeNode right, TreeNode left) {
+		TreeNode tmp = right;
+		right = left;
+		left = tmp;
+		if(right != null)
+			reverse(right.right, right.left);
+		if(left != null)
+			reverse(left.right, left.left);
+	}
+	/**翻转二叉树,自己写的 end*/
+	
 	public boolean isBalanced(TreeNode root) {
-        return recur(root) != -1;
-    }
+		return recur(root) != -1;
+	}
 
 	private int recur(TreeNode root) {
 		if (root == null)
@@ -48,7 +76,7 @@ public class BaseTree {
 	private TreeNode helper(int left, int right) {
 		if (left > right)
 			return null;
-		int p = (left + right) / 2;     // 有序，二叉搜索树等，用二分法(left,right双向递归)
+		int p = (left + right) / 2; // 有序，二叉搜索树等，用二分法(left,right双向递归)
 		TreeNode root = new TreeNode(nums[p]);
 		root.left = helper(left, p - 1);
 		root.right = helper(p + 1, right);
@@ -56,10 +84,10 @@ public class BaseTree {
 	}
 
 	public TreeNode sortedArrayToBST(int[] nums) {
-		this.nums = nums;               // 之所以分成两个方法，是因为left,right递归不好安排    
+		this.nums = nums; // 之所以分成两个方法，是因为left,right递归不好安排
 		return helper(0, nums.length - 1);
 	}
-	
+
 	public boolean isSameTree(TreeNode p, TreeNode q) {
 		if (p == null && q == null)
 			return true;

@@ -1,19 +1,12 @@
-package algorithm.sort;
+package algorithm.weilong;
 
 /**
  * 快速排序
  */
 public class QuickSort {
-	/**
-	 * Tips：排序需要掌握Bubble,Quick,Heap,Merge
-	 * 
-	 * 快排为什么是不稳定的？
-	 * 排序bai之前du,有两个数相等，在排序结束之后,它们两个有可能bai改变顺序
-	 * 例 {2, 1, 1, 3} 以2为基准向下分治，2就要和第二个1交换，这就不稳定了
-	 * 
-	 */
+
 	public static void main(String[] args) {
-		int[] arr = new int[]{1,5,9,6,2,5,6,8,5,0};
+		int[] arr = new int[]{1,3,9,6,2,4,7,8,5,0};
 		quickSort(arr, 0, 9);
 		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);

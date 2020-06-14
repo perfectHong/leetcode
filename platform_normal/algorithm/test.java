@@ -9,7 +9,7 @@ package algorithm;
 public class test {
 
 	/**
-	 * @param args
+	 * 必备算法：快排，冒泡，二分，lru，单例
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

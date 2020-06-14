@@ -1,7 +1,5 @@
 package concurrency.artofconcurrency.chapter_four;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * 可以看看join()的源码，涉及了等待/通知机制
  * 

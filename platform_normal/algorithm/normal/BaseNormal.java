@@ -28,6 +28,15 @@ public class BaseNormal {
 		rob2(new int[] { 7, 1, -1, 1, 7 });
 	}
 
+	// 判断整数 n 是否是素数(质数)
+	boolean isPrime(int n) {
+	    for (int i = 2; i < n/2; i++)
+	        if (n % i == 0)
+	            // 有其他整除因子
+	            return false;
+	    return true;
+	}
+
 	public static int rob(int[] num) {
 	    int prevMax = 0;
 	    int currMax = 0;
