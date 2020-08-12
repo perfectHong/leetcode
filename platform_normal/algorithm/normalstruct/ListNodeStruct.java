@@ -9,7 +9,7 @@ import vo.ListNode;
  *
  * @description 能掌握以下四道题，链表就足够了
  */
-public class BaseStruct {
+public class ListNodeStruct {
 
 	public static void main(String[] args) {
 		ListNode node = new ListNode(1);
@@ -17,27 +17,34 @@ public class BaseStruct {
 		node.next.next = new ListNode(3);
 		node.next.next.next = new ListNode(4);
 		node.next.next.next.next = new ListNode(5);
-		node.next.next.next.next.next = new ListNode(4);
-		removeElements(node, 4);
+//		node.next.next.next.next.next = new ListNode(4);
+//		removeElements(node, 4);
+		reverseList1(node);
 	}
 	
 	/**重点***反转链表，迭代**/  //自己画图
-	public ListNode reverseList1(ListNode head) {  //包含了4个node，平常写的时候不要嫌多
+	public static ListNode reverseList1(ListNode head) {  //包含了3个node，平常写的时候不要嫌多
 		ListNode res = null;
-		ListNode node = head;
-		while (node != null) {
-			ListNode nextTemp = node.next;
-			node.next = res;  // 当时主要是这里不容易想到
-			res = node;
-			node = nextTemp;
+		while (head != null) {
+			ListNode nextTemp = head.next;
+			head.next = res;  // 当时主要是这里不容易想到
+			res = head;  //head指向了上一个res，res再指向head
+			head = nextTemp;
 		}
 		return res;
     }
 	
 	/**重点***反转链表，递归，看leetcode题解没懂**/ 
 	public ListNode reverseList2(ListNode head) {
-		return head;
+		if(head==null || head.next==null) {
+			return head;
+		}
+		ListNode cur = reverseList2(head.next);
+		head.next.next = head;
+		head.next = null;
+		return cur;
 	}
+
 	
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     	if (headA == null || headB == null) return null;

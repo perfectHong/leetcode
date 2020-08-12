@@ -10,7 +10,7 @@ public class BaseStringArray {
 
 	public static void main(String[] args) {
 //		escape();
-		reverse1();
+		reverse2();
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class BaseStringArray {
 	/**
 	 * 反转字符串，不使用额外空间
 	 * 
-	 * substring(1,7)截取的是2~7位，即engfhm
+	 * substring(1,7)截取的是2~7位，截取六位
 	 * replace和replaceAll调用后返回类型是String，需要将返回值赋值给str
 	 * char[] ch = str.toCharArray()
 	 * reverse()用法要结合StringBuilder(str)
@@ -41,28 +41,26 @@ public class BaseStringArray {
 	 * reverse()返回的是this,是对自身进行的操作
 	 * */
 	public static void reverse1(){
-		String str = "mengfhm1";
+		String str = "mengfhdym";
 		for (int i = 0; i < str.length() - 1; i++) {
 			if(str.substring(i + 1, str.length()).contains(str.substring(i, i + 1))){
 				System.out.println("false");
 			}
 		}
 		System.out.println(str.indexOf("e"));
-		//str = str.replaceAll( "1" , "2");
-		//System.out.println(str.replaceAll( "1" , "2"));
 		System.out.println(str.replace( "1" , "2"));
-		
 		StringBuilder sb = new StringBuilder(str);
 		sb.reverse();
 		System.out.println(sb);
-		
 	}
 	
 	/**转换"www.baidu.com"->"com.baidu.www"*/
+	/**虽然split用的\\.，但append用的.*/
 	public static void reverse2(){
 		String str = "www.baidu.com";
-		
-		
+		String[] arr = str.split("\\.");
+		str = new StringBuilder().append(arr[2]).append(".").append(arr[1]).append(".").append(arr[0]).toString();
+		System.out.println(str);
 	}
 
 }

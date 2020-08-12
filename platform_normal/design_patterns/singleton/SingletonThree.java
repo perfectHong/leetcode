@@ -21,7 +21,7 @@ public class SingletonThree {
 			synchronized(SingletonThree.class){  // 注意这里锁的是类.class，而不是this
 				if (singleton == null) {         // this关键字必须放在非静态方法里面,因为this代表当前对象的引用，是对象级别的，static是类级别的
 					singleton = new SingletonThree();				
-					}
+				}
 			}
 		}
 		return singleton;

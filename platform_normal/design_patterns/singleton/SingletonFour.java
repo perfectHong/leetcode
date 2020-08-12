@@ -21,17 +21,15 @@ public class SingletonFour {
 	 * (4)虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确地加锁、同步，一个线程执行<clinit>()方法，其他线程都阻塞
 	 * */
 	public static void main(String[] args) {
-		System.out.println(SingletonFour.getSingleton() == SingletonFour.getSingleton());
+		SingletonFour s1 = SingletonFour.getSingleton();
+		SingletonFour s2 = SingletonFour.getSingleton();
+		System.out.println(s1 == s2);
 	}
 	
-	private SingletonFour(){
-        if(SubClass.singleton != null){
-            throw new RuntimeException("只能创建一次。");
-        }
-    }
+	private SingletonFour(){}
 	
-	public static class SubClass{
-		private static SingletonFour singleton = new SingletonFour();
+	private static class SubClass{
+		private static SingletonFour singleton = new SingletonFour();//这里的singleton只初始化一次，可以跟代码看
 	}
 	
 	public static SingletonFour getSingleton(){

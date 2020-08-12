@@ -11,21 +11,21 @@ import vo.TreeNode;
 /**
  * @author mengfh
  * 
- * @version 2020-4-23ÏÂÎç8:33:55
+ * @version 2020-4-23ä¸‹åˆ8:33:55
  * 
  * @description
  */
 
 public class BaseTree {
 
-	/** ¿ÉÓÃÓÚÓĞĞòÊı×é */
+	/** å¯ç”¨äºæœ‰åºæ•°ç»„ */
 	private int[] nums;
 
 	public static void main(String[] args) {
 
 	}
 	
-	/** ÖØµã */// ·­×ª¶ş²æÊ÷,±ê×¼Ìâ½â
+	/** é‡ç‚¹ */// ç¿»è½¬äºŒå‰æ ‘,æ ‡å‡†é¢˜è§£
 	public TreeNode invertTree(TreeNode root) {
 		if (root == null) {
 			return null;
@@ -38,56 +38,6 @@ public class BaseTree {
 		return root;
 	}
 	
-	/**·­×ª¶ş²æÊ÷,×Ô¼ºĞ´µÄ start*/
-	public TreeNode invertTree2(TreeNode root) {
-		if (root == null) {
-			return null;
-		}
-		reverse(root.right, root.left);
-		return root;
-	}
-	private void reverse(TreeNode right, TreeNode left) {
-		TreeNode tmp = right;
-		right = left;
-		left = tmp;
-		if(right != null)
-			reverse(right.right, right.left);
-		if(left != null)
-			reverse(left.right, left.left);
-	}
-	/**·­×ª¶ş²æÊ÷,×Ô¼ºĞ´µÄ end*/
-	
-	public boolean isBalanced(TreeNode root) {
-		return recur(root) != -1;
-	}
-
-	private int recur(TreeNode root) {
-		if (root == null)
-			return 0;
-		int left = recur(root.left);
-		if (left == -1)
-			return -1;
-		int right = recur(root.right);
-		if (right == -1)
-			return -1;
-		return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
-	}
-
-	private TreeNode helper(int left, int right) {
-		if (left > right)
-			return null;
-		int p = (left + right) / 2; // ÓĞĞò£¬¶ş²æËÑË÷Ê÷µÈ£¬ÓÃ¶ş·Ö·¨(left,rightË«Ïòµİ¹é)
-		TreeNode root = new TreeNode(nums[p]);
-		root.left = helper(left, p - 1);
-		root.right = helper(p + 1, right);
-		return root;
-	}
-
-	public TreeNode sortedArrayToBST(int[] nums) {
-		this.nums = nums; // Ö®ËùÒÔ·Ö³ÉÁ½¸ö·½·¨£¬ÊÇÒòÎªleft,rightµİ¹é²»ºÃ°²ÅÅ
-		return helper(0, nums.length - 1);
-	}
-
 	public boolean isSameTree(TreeNode p, TreeNode q) {
 		if (p == null && q == null)
 			return true;
@@ -104,7 +54,7 @@ public class BaseTree {
 		return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 	}
 
-	/** ¶Ô³ÆµÄÊ÷ */
+	/** å¯¹ç§°çš„æ ‘ */
 	public boolean isSymmetric(TreeNode root) {
 		if (root.left == null && root.right == null)
 			return true;
@@ -120,16 +70,23 @@ public class BaseTree {
 			return;
 		Stack<TreeNode> stack = new Stack<>();
 		stack.push(root);
-
 		while (!stack.isEmpty()) {
 			TreeNode treeNode = stack.pop();
 			System.out.println(treeNode.val);
-			if (treeNode.right != null) // DFSÊ¹ÓÃStack£¬ÏÈ½øÓÒ×ÓÊ÷£¬ÏÈ½øºó³öÔ­Àí
+			if (treeNode.right != null) // DFSä½¿ç”¨Stackï¼Œå…ˆè¿›å³å­æ ‘ï¼Œå…ˆè¿›åå‡ºåŸç†
 				stack.push(treeNode.right);
 			if (treeNode.left != null)
 				stack.push(treeNode.left);
 		}
 	}
+	
+//	private void depthTraversal(TreeNode tn){
+//		if(tn!=null&&!tn.equals(null)){
+//			System.out.print(tn.val+"Â Â ");
+//			depthTraversal(tn.left);
+//			depthTraversal(tn.left);
+//		}Â Â Â Â Â Â Â Â Â 
+//	Â }
 
 	public static void BFSByQueue(TreeNode root) {
 		if (root == null)
@@ -140,11 +97,45 @@ public class BaseTree {
 		while (!queue.isEmpty()) {
 			TreeNode treeNode = queue.poll();
 			System.out.println(treeNode.val);
-			if (treeNode.left != null) // BFSÊ¹ÓÃQueue,ÏÈ½ø×ó×ÓÊ÷£¬ÏÈ½øÏÈ³öÔ­Àí
+			if (treeNode.left != null) // BFSä½¿ç”¨Queue,å…ˆè¿›å·¦å­æ ‘ï¼Œå…ˆè¿›å…ˆå‡ºåŸç†
 				queue.add(treeNode.left);
 			if (treeNode.right != null)
 				queue.add(treeNode.right);
 		}
 	}
 
+	/** å¹³è¡¡æ ‘ start*/
+	public boolean isBalanced(TreeNode root) {
+		return recur(root) != -1;
+	}
+	
+	private int recur(TreeNode root) {
+		if (root == null)
+			return 0;
+		int left = recur(root.left);
+		if (left == -1)
+			return -1;
+		int right = recur(root.right);
+		if (right == -1)
+			return -1;
+		return Math.abs(left - right) < 2 ? Math.max(left, right) + 1 : -1;
+	}
+	/** å¹³è¡¡æ ‘ end*/
+	
+	/**æœ‰åºæ•°ç»„è½¬äºŒå‰æœç´¢æ ‘ start*/
+	private TreeNode helper(int left, int right) {
+		if (left > right)
+			return null;
+		int p = (left + right) / 2; // æœ‰åºï¼ŒäºŒå‰æœç´¢æ ‘ç­‰ï¼Œç”¨äºŒåˆ†æ³•(left,rightåŒå‘é€’å½’)
+		TreeNode root = new TreeNode(nums[p]);
+		root.left = helper(left, p - 1);
+		root.right = helper(p + 1, right);
+		return root;
+	}
+	
+	public TreeNode sortedArrayToBST(int[] nums) {
+		this.nums = nums; // ä¹‹æ‰€ä»¥åˆ†æˆä¸¤ä¸ªæ–¹æ³•ï¼Œæ˜¯å› ä¸ºleft,righté€’å½’ä¸å¥½å®‰æ’
+		return helper(0, nums.length - 1);
+	}
+	/**æœ‰åºæ•°ç»„è½¬äºŒå‰æœç´¢æ ‘ end*/
 }

@@ -13,9 +13,9 @@ public class BitOperationTest {
 	 */
 	public static void main(String[] args) {
 		int n = 0;
-		System.out.println(1|9);
-		System.out.println(1^9);
-		System.out.println(1&9);
+		System.out.println("1|9 : " + ( 1|9));
+		System.out.println("1^9 : " + ( 1^9));
+		System.out.println("1&9 : " + ( 1&9));
 		System.out.println(1<<3);     // 用最有效率的方法计算1乘以8
 		System.out.println(1>>3);     // 0 ,1右移一下就为0了
 		System.out.println(16>>>3);   // 无符号右移

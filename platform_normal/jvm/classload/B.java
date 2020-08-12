@@ -26,7 +26,7 @@ public class B {
 	{
 		i++;
 		j++;
-		System.out.println("Class B:common blocks" + "i=" + i + ",j=" + j);  //5，调用其父类B的构造函数前,依次先调用父类B中的非静态变量及非静态语句块
+		System.out.println("Class B:common blocks" + "i=" + i + ",j=" + j);  //5，调用其父类B的构造函数前,依次先调用父类B中的非静态变量及非静态语句块,因为要做初始化
 	}
 
 	// 非静态方法

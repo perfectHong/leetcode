@@ -11,6 +11,7 @@ class MyInvocationHandler implements InvocationHandler {
         this.javaProxy = javaProxy;
     }
     
+    /**AOPË¼Ïë*/
     private void aopMethod() {
         System.out.println("before method");
     }

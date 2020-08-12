@@ -20,12 +20,8 @@ public enum SingletonFive {
 
 	singleton;
 	
-	public static SingletonFive getInstance(){
-		
-        return singleton;
-    }
 	public static void main(String[] args) {
-		Class clazz = SingletonFive.class;
+		Class<SingletonFive> clazz = SingletonFive.class;
 		 try {
 	            Constructor<SingletonFive> c = clazz.getDeclaredConstructor();
 	            c.setAccessible(true);

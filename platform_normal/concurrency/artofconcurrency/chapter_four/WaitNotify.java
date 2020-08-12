@@ -28,7 +28,7 @@ import concurrency.support.SleepUtils;
  * 
  * 等待通知机制可以用于代替suspend(),stop()
  * suspend()在调用后，线程不会释放已经占有的资源（比如锁），容易引发死锁问题。
- * top()方法在终结一个线程时不会保证线程的资源正常释放
+ * stop()方法在终结一个线程时不会保证线程的资源正常释放
  * */
 public class WaitNotify {
 
@@ -52,7 +52,7 @@ public class WaitNotify {
 				while (flag) {
 					try {
 						System.out.println(Thread.currentThread()
-								+ " flag is true. wa@ "
+								+ " flag is true. wa@ "                  //1  3
 								+ new SimpleDateFormat("HH:mm:ss")
 										.format(new Date()));
 						lock.wait();
@@ -61,7 +61,7 @@ public class WaitNotify {
 				}
 				// 条件满足时，完成工作
 				System.out.println(Thread.currentThread()
-						+ " flag is false. running@ "
+						+ " flag is false. running@ "                   //4
 						+ new SimpleDateFormat("HH:mm:ss").format(new Date()));
 			}
 		}
@@ -74,18 +74,18 @@ public class WaitNotify {
 				// 获取lock的锁，然后进行通知，通知时不会释放lock的锁，
 				// 直到当前线程释放了lock后，WaitThread才能从wait方法中返回
 				System.out.println(Thread.currentThread()
-						+ " hold lock. notify @ "
+						+ " hold lock. notify @ "                  //2
 						+ new SimpleDateFormat("HH:mm:ss").format(new Date()));
 				lock.notifyAll();
 				flag = false;
-				SleepUtils.second(5);  //这里睡五秒不会释放锁，要等方法块执行完毕
+				SleepUtils.second(2);  //这里睡五秒不会释放锁，要等方法块执行完毕
 			}
 			// 再次加锁
 			synchronized (lock) {
 				System.out.println(Thread.currentThread()
-						+ " hold lock again. sleep@ "
+						+ " hold lock again. sleep@ "                 //5
 						+ new SimpleDateFormat("HH:mm:ss").format(new Date()));
-				SleepUtils.second(5);
+				SleepUtils.second(2);
 			}
 		}
 	}
