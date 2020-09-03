@@ -1,4 +1,4 @@
-package algorithm.stringarray;
+package algorithm.thinking.stringarray;
 /**
  * @author mengfh
  *
@@ -9,13 +9,13 @@ package algorithm.stringarray;
 public class BaseStringArray {
 
 	public static void main(String[] args) {
-//		escape();
 		reverse2();
 	}
 	
 	/**
 	 * split()
-	 * 转义字符，待补充*/
+	 * 转义字符，待补充
+	 * */
 	private static void escape() {
 		String ss = "www.'baidu.'com";
 		String[] str1 = ss.split("\\.");   //.
@@ -26,32 +26,6 @@ public class BaseStringArray {
 			System.out.println(str2[i]);
 			System.out.println("\n");	   //换行
 		}
-	}
-	
-	/**
-	 * 反转字符串，不使用额外空间
-	 * 
-	 * substring(1,7)截取的是2~7位，截取六位
-	 * replace和replaceAll调用后返回类型是String，需要将返回值赋值给str
-	 * char[] ch = str.toCharArray()
-	 * reverse()用法要结合StringBuilder(str)
-	 * 
-	 * 源码观察：
-	 * substring()replace()replaceAll()返回的是new的对象，所以要值赋值给str
-	 * reverse()返回的是this,是对自身进行的操作
-	 * */
-	public static void reverse1(){
-		String str = "mengfhdym";
-		for (int i = 0; i < str.length() - 1; i++) {
-			if(str.substring(i + 1, str.length()).contains(str.substring(i, i + 1))){
-				System.out.println("false");
-			}
-		}
-		System.out.println(str.indexOf("e"));
-		System.out.println(str.replace( "1" , "2"));
-		StringBuilder sb = new StringBuilder(str);
-		sb.reverse();
-		System.out.println(sb);
 	}
 	
 	/**转换"www.baidu.com"->"com.baidu.www"*/

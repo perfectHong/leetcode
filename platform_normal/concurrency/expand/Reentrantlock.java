@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.expand;
+package concurrency.expand;
 
 
 /**

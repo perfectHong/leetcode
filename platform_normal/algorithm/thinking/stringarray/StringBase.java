@@ -1,4 +1,4 @@
-package algorithm.stringarray;
+package algorithm.thinking.stringarray;
 /**
  * @author mengfh
  *

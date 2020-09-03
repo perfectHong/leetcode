@@ -1,10 +1,10 @@
-package concurrency.artofconcurrency.expand;
+package concurrency.expand;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *这里有两个线程，每个线程可冲入自己已获得的锁，上断点printer.print();
+ *这里有两个线程，每个线程可重入自己已获得的锁，上断点printer.print();
  */
 public class ReentranLockTest {
 

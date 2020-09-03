@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.expand;
+package concurrency.expand;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

@@ -1,4 +1,4 @@
-package algorithm.tree;
+package algorithm.thinking.tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -4,7 +4,7 @@ package java_base.bit_operation;
  *
  * @version 2020-5-23上午10:30:38
  *
- * @description
+ * @description 二进制，位运算
  */
 public class BitOperationTest {
 

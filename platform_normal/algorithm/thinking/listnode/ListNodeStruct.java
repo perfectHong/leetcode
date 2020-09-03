@@ -1,4 +1,4 @@
-package algorithm.normalstruct;
+package algorithm.thinking.listnode;
 
 import vo.ListNode;
 

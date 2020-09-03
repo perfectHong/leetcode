@@ -1,4 +1,4 @@
-package java_base;
+package java_base.iterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,9 +9,9 @@ import java.util.List;
  *
  * @version 2020-6-11上午9:20:15
  *
- * @description
+ * @description 迭代器
  */
-public class IteretorTest {
+public class IteratorTest {
 
 	/**
 	 * func1没问题，func2和func3会报并发修改异常

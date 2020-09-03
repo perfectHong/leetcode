@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.expand;
+package concurrency.expand;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
