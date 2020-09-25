@@ -1,6 +1,6 @@
 --练习题https://www.nowcoder.com/ta/sql
 --函数大全http://c.biancheng.net/mysql/function/
-第一遍没写出来的：1、2、12、14、15、17、18（重要）、21（重要）、23（重要）、25（重要）、
+第一遍没写出来的：1、2、12、14、15、17、18（重要）、21（重要）、23（重要）、25（重要）、26、28（很重要）
 
 1.查找最晚入职员工的所有信息
 select * from employees where hire_date = (select max(hire_date) from employees)
@@ -65,14 +65,27 @@ inner join salaries sa2 on ma.emp_no = sa2.emp_no
 where sa1.salary > sa2.salary
 --难点：自己join自己，自己写出来了感觉老牛逼了
 
+26.给出部门编号dept_no、dept_name、其部门下所有的当前员工的当前title以及该类型title对应的数目count
+select pa.dept_no, pa.dept_name, ti.title, count(title) 
+from departments pa 
+inner join dept_emp de on pa.dept_no = de.dept_no
+inner join titles ti on de.emp_no = ti.emp_no
+group by pa.dept_no, ti.title
+--难点：考察group by和聚合函数，group by pa.dept_no, ti.title和group by pa.dept_no, pa.dept_name, ti.title都是对的
 
+28.查找描述信息(film.description)中包含robot的电影对应的分类名称(category.name)以及电影数目(count(film.film_id))，而且还需要该分类包含电影总数量(count(film_category.category_id))>=5部
+select c.name,count(f.film_id)  from category  c join film_category fc 
+on c.category_id=fc.category_id
+join film f on f.film_id=fc.film_id
+where f.description like '%robot%'
+and fc.category_id in (SELECT category_id FROM film_category HAVING count(film_id)>=5)
+GROUP BY c.name
+--难点：group by 与 having；count(f.film_id)  与count(c.name)  ;你没有想到子查询；包含 与 like关键字
+--难点：思考select语句没有聚合函数时，select和group by的关系是怎么样的呢？
+--例子1：select stuname from student group by stuname having count(id) = 1  group by应该包含所有select的字段，聚合函数无所谓
+--例子2：select stuname,teacherid,count(id) temp from student where id != 0 group by teacherid,stuname having count(stuage) > 0 order by id desc 会报错，order by的字段应该包含在group by字段中
 
-
-
-
-
-
-
+31.
 
 
 

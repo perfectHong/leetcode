@@ -15,9 +15,9 @@ public class AB_Print implements Runnable {
 	/** 要把printNum()抽出来，并用synchronized修饰，否则会报错获取锁监视器异常*/
 	private synchronized void printNum() {
 		System.out.println(Thread.currentThread().getName() + " is running " + i++);
-		this.notify();
+		notify();
 		try {
-			this.wait();
+			wait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

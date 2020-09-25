@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * 
  * @description
  */
-public class SeckillTest {
+public class ThreadRunTest {
 
 	private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(0, 0, 1, null, null);
 	
@@ -21,11 +21,7 @@ public class SeckillTest {
 	}
 
 	public void startKafkaQueue(long seckillId) {
-		//seckillService.deleteSeckill(seckillId);
-		//final long killId = seckillId;
-		//LOGGER.info("开始秒杀四");
 		for (int i = 0; i < 1000; i++) {
-			//final long userId = i;
 			Runnable task1 = new Runnable() {  /**注意这三种写法都可以，都实现了Runnable*/
 				@Override
 				public void run() {
@@ -50,11 +46,7 @@ public class SeckillTest {
 		}
 		try {
 			Thread.sleep(10000);
-			//redisUtil.cacheValue(killId + "", null);
-			//Long seckillCount = seckillService.getSeckillCount(seckillId);
-			//LOGGER.info("一共秒杀出{" + seckillCount + "}件商品");
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 
