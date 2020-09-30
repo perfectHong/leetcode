@@ -1,4 +1,4 @@
-package concurrency.artofconcurrency.chapter_two;
+package com.concurrenttest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 
  * @description CAS实现线程安全
  */
-public class Counter {
+public class CASAtomicCounter {
 
 	private AtomicInteger atomicI = new AtomicInteger(0);
 	
 	private int i = 0;
 
 	public static void main(String[] args) {
-		final Counter cas = new Counter();
+		final CASAtomicCounter cas = new CASAtomicCounter();
 		List<Thread> ts = new ArrayList<Thread>(600);  //注意这里借助到了arraylist装载thread
 		long start = System.currentTimeMillis();
 		for (int j = 0; j < 100; j++) {

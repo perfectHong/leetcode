@@ -1,5 +1,9 @@
 package com.so;
 
+import java.util.ArrayList;
+
+import vo.ListNode;
+
 /**
  * 公共类
  *
@@ -7,15 +11,16 @@ package com.so;
  * @date 2019/07/01
  */
 public class Common {
+	
     /**
      * 二叉树
      */
     public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    	public int val;
+    	public TreeNode left;
+    	public TreeNode right;
 
-        TreeNode(int x) {
+    	public TreeNode(int x) {
             val = x;
         }
     }
@@ -24,13 +29,32 @@ public class Common {
      * 链表
      */
     public static class ListNode {
-        int val;
-        ListNode next;
+    	
+    	public int val;
+        public ListNode next;
 
-        ListNode(int val) {
+        public ListNode(int val) {
             this.val = val;
         }
+        
+        public ListNode(){};
+        
+        /**
+         * 构建链表
+         */
+        public static ListNode builder() {
+        	ListNode node = new ListNode(0); // 创建首节点
+        	ListNode nextNode; // 声明一个变量用来在移动过程中指向当前节点
+        	nextNode = node;   // 指向首节点      /** 重点是node，我一直没想到 */
+        	for (int i = 1; i < 10; i++) {
+        		ListNode newNode = new ListNode(i); // 生成新的节点
+        		nextNode.next = newNode; 
+        		nextNode = nextNode.next; // 当前节点往后移动
+        	} 
+        	return nextNode = node; 
+        }
     }
+    
 
     /**
      * 获取链表的所有节点
