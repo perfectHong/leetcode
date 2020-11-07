@@ -2,12 +2,14 @@ package com.so;
 
 import java.util.ArrayList;
 
+import com.so.Common.TreeNode;
+
 import vo.ListNode;
 
 /**
  * 公共类
  *
- * @author qgl
+ * @author mengfh
  * @date 2019/07/01
  */
 public class Common {
@@ -23,6 +25,13 @@ public class Common {
     	public TreeNode(int x) {
             val = x;
         }
+
+		public static TreeNode builder() {
+
+			
+			
+			return null;
+		}
     }
 
     /**
@@ -43,16 +52,15 @@ public class Common {
          * 构建链表
          */
         public static ListNode builder() {
-        	ListNode node = new ListNode(0); // 创建首节点
-        	ListNode nextNode; // 声明一个变量用来在移动过程中指向当前节点
-        	nextNode = node;   // 指向首节点      /** 重点是node，我一直没想到 */
-        	for (int i = 1; i < 10; i++) {
-        		ListNode newNode = new ListNode(i); // 生成新的节点
-        		nextNode.next = newNode; 
-        		nextNode = nextNode.next; // 当前节点往后移动
-        	} 
-        	return nextNode = node; 
-        }
+    		ListNode node = new ListNode();  			//这里产生了对象，并分配了引用
+    		ListNode head = node;            			//这里只分配引用，代表node和head指向同一块内存空间
+    		for (int i = 1; i < 10; i++) {
+    			ListNode temp = new ListNode(i);		//temp作为新节点，head作为移动节点，node始终指向原始对象，返回node即可
+    			head.next = temp;
+    			head = head.next;						//节点后移
+    		}
+    		return node;								//整个算法用到了node，head和temp，常复习，了解他们的关系
+    	}
     }
     
 
@@ -71,3 +79,4 @@ public class Common {
         return sb.length() < 1 ? null : sb.substring(0, sb.length() - 2);
     }
 }
+

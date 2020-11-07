@@ -1,21 +1,16 @@
 package com.sotest;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.so.Common.ListNode;
-
-import algorithm.test;
+import com.sotest.Common.TreeNode;
 
 import utils.MapList;
 
-//https://blog.csdn.net/weiwei121451070/article/details/81742418?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase
+//https://www.nowcoder.com/ta/coding-interviews
 public class Test {
 
 	private static Map<String, Test> instances = new HashMap<>();
@@ -62,7 +57,7 @@ public class Test {
 			this.lock.unlock();
 		}
 	}
-
+	
 	public void release(String lockid) {
 		this.lock.lock();
 		try {
@@ -73,35 +68,30 @@ public class Test {
 			this.lock.unlock();
 		}
 	}
-
-	// 输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。
-	public static ArrayList<Integer> test(ListNode node) {
-		ArrayList<Integer> list = new ArrayList<>();
-		Stack<Integer> stack = new Stack<>();
-		ListNode head = new ListNode();
-		head = node;
-		while (head != null) {
-			stack.push(head.val);
-			head = head.next;
-		}
-		while (!stack.isEmpty()) {
-			list.add(stack.pop());
-		}
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		return list;
+	
+	private static boolean testname2(TreeNode node1, TreeNode node2) {
+		return contains(node1, node2);
 	}
-
-	public static void main(String[] args) {
-		ListNode node = new ListNode(0); // 创建首节点
-    	ListNode nextNode; // 声明一个变量用来在移动过程中指向当前节点
-    	nextNode = node;   // 指向首节点      /** 重点是node，我一直没想到 */
-    	for (int i = 1; i < 10; i++) {
-    		ListNode newNode = new ListNode(i); // 生成新的节点
-    		nextNode.next = newNode; 
-    		nextNode = nextNode.next; // 当前节点往后移动
-    	} 
-    	//nextNode = node; 
+	
+	/** 做出来了，很欣慰，复习递归思想 */
+	private static boolean contains(TreeNode node1, TreeNode node2) {
+		if(node1.data == null && node2.data != null)
+			return false;
+		else if(node1.data != null && node2.data == null)
+			return true;
+		else if(node1.data == null && node2.data == null)
+			return true;
+		else {
+			contains(node1.left, node2.left);
+			contains(node1.right, node2.right);
+		}
+		return true;
 	}
+	
+	public static void main(String[] args) throws Exception {
+		Common.TreeNode tree1 = Common.BinaryTree.createTreeByRecursion2(new String[]{"A","B","D","#","#","#","C","#","E","#","#"});
+		Common.TreeNode tree2 = Common.BinaryTree.createTreeByRecursion2(new String[]{"A","B","#","#","C","#","#"});
+		testname2(tree1, tree2);
+	}
+	
 }

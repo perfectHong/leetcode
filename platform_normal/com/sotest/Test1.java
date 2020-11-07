@@ -23,7 +23,7 @@ public class Test1 {
 		// 获取数组的行列数
 		int row = arr.length;
 		int col = arr[0].length;
-		// 初始化(i.j)为右上角位置
+		// 初始化(i.j)为右上角位置，双指针i，j
 		int i = 0;
 		int j = col - 1;
 		// 判断是否在最大最小值之间
